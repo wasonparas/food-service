@@ -48,13 +48,16 @@ export ECR_REGISTRY="${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com"
 
 aws ecr create-repository --repository-name restaurant-service --region "$AWS_REGION" || true
 aws ecr create-repository --repository-name order-service --region "$AWS_REGION" || true
+
 aws ecr get-login-password --region "$AWS_REGION" | docker login --username AWS --password-stdin "$ECR_REGISTRY"
+
 
 docker build -t restaurant-service:1.0 ./restaurant-service
 docker build -t order-service:1.0 ./order-service
 
 docker tag restaurant-service:1.0 "$ECR_REGISTRY/restaurant-service:1.0"
 docker tag order-service:1.0 "$ECR_REGISTRY/order-service:1.0"
+
 docker push "$ECR_REGISTRY/restaurant-service:1.0"
 docker push "$ECR_REGISTRY/order-service:1.0"
 ```
@@ -74,7 +77,9 @@ sed -i "s/ACCOUNT_ID/${AWS_ACCOUNT_ID}/g; s/REGION/${AWS_REGION}/g" kubernetes/r
 ## 3. Deploy to EKS
 
 ```bash
-aws eks update-kubeconfig --region "$AWS_REGION" --name YOUR_EKS_CLUSTER
+aws eks update-kubeconfig --region ap-southeast-2 --name test-cluster
+
+
 kubectl apply -f kubernetes/namespace.yaml
 kubectl apply -f kubernetes/restaurant.yaml
 kubectl apply -f kubernetes/order.yaml
@@ -126,6 +131,11 @@ curl http://ALB-DNS/orders/orders
 ```
 
 The Ingress routes `/restaurants` and `/orders` prefixes to the respective services. This demo keeps the application endpoints under those prefixes.
+
+
+http://k8s-fooddemo-fooddemo-08301086d4-914044465.ap-southeast-2.elb.amazonaws.com/restaurants
+
+http://k8s-fooddemo-fooddemo-08301086d4-914044465.ap-southeast-2.elb.amazonaws.com/orders
 
 ## 6. KT demo commands
 
