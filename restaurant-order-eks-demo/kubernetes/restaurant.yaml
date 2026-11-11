@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: restaurant-service
-          image: 372595555477.dkr.ecr.REGION.amazonaws.com/restaurant-service:1.0
+          image: 372595555477.dkr.ecr.ap-southeast-2.amazonaws.com/restaurant-service:1.0
           ports:
             - containerPort: 8080
           readinessProbe:
