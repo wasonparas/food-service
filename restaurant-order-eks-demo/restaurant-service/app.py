@@ -5,6 +5,8 @@ RESTAURANTS = [
     {"id": 1, "name": "Kiwi Kitchen", "cuisine": "New Zealand"},
     {"id": 2, "name": "Taco Town", "cuisine": "Mexican"},
     {"id": 3, "name": "Noodle House", "cuisine": "Asian"},
+    {"id": 4, "name": "Curry House", "cuisine": "Indian"},
+
 ]
 
 @app.get("/health")
