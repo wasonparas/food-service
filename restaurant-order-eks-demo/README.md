@@ -83,6 +83,8 @@ aws eks update-kubeconfig --region ap-southeast-2 --name test-cluster
 kubectl apply -f kubernetes/namespace.yaml
 kubectl apply -f kubernetes/restaurant.yaml
 kubectl apply -f kubernetes/order.yaml
+kubectl apply -f kubernetes/alb-ingressclass.yaml
+kubectl apply -f kubernetes/ingress.yaml
 
 kubectl rollout status deployment/restaurant-service -n food-demo
 kubectl rollout status deployment/order-service -n food-demo
