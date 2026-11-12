@@ -135,9 +135,9 @@ curl http://ALB-DNS/orders/orders
 The Ingress routes `/restaurants` and `/orders` prefixes to the respective services. This demo keeps the application endpoints under those prefixes.
 
 
-http://k8s-fooddemo-fooddemo-08301086d4-914044465.ap-southeast-2.elb.amazonaws.com/restaurants
+http://k8s-fooddemo-fooddemo-08301086d4-412648859.ap-southeast-2.elb.amazonaws.com/restaurants
 
-http://k8s-fooddemo-fooddemo-08301086d4-914044465.ap-southeast-2.elb.amazonaws.com/orders
+http://k8s-fooddemo-fooddemo-08301086d4-412648859.ap-southeast-2.elb.amazonaws.com/orders
 
 ## 6. KT demo commands
 
