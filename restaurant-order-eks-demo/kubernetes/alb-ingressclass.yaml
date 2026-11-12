@@ -3,4 +3,12 @@ kind: IngressClass
 metadata:
   name: alb
 spec:
-  controller: ingress.k8s.aws/alb
+  controller: eks.amazonaws.com/alb
+---
+apiVersion: eks.amazonaws.com/v1
+kind: IngressClassParams
+metadata:
+  name: alb
+spec:
+  scheme: internet-facing
+  targetType: ip
